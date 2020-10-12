@@ -21,7 +21,10 @@
                 <entry key="process.operation" value="insert"/>
                 <entry key="process.mappingFile" value="C:\Users\alexis\dataloader\v49.0.0\configs\benefitSummaryMasterMap.sdl"/>
                 <entry key="dataAccess.name" value="C:\Users\alexis\Downloads\Allwell_HMO_DSNP_20.csv"/>
-                <entry key="dataAccess.type" value="databaseRead"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <entry key="sfdc.useBulkApi" value="true"/>
+                <entry key="sfdc.loadBatchSize" value="2000"/>
+                <entry key="sfdc.insertNulls" value="true"/>
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
