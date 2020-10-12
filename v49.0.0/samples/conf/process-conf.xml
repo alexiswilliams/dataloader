@@ -1,0 +1,29 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="benefitSummaryMasterProcess"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description>BenefitSummaryMaster job gets the plan data record updates from LDP and uploads them to Salesforce.</description>
+        <property name="name" value="benefitSummaryMasterProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="c:\dataloader\v49.0.0\config\benefitSummaryMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value="https://test.salesforce.com"/>
+                <entry key="sfdc.username" value="awilliams@plumtreegroup.net.liberty.dev"/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value="17bfc0974e7867afa9957f0f2eca6c6e74ad0df2926f1bf38c5f8ba322cfb8a8"/>
+                <entry key="process.encryptionKeyFile" value="C:\Users\alexis\.dataloader\dataLoader.key"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Benefit_Summary__c"/>
+                <entry key="process.operation" value="inisert"/>
+                <entry key="process.mappingFile" value="c:\dataloader\v49.0.0\config\benefitSummaryMasterMap.sdl"/>
+                <entry key="dataAccess.name" value="queryBenefitSummary"/>
+                <entry key="dataAccess.type" value="databaseRead"/>
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+</beans>

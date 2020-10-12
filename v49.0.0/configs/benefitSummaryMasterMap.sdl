@@ -1,0 +1,23 @@
+#Mapping values
+#Sat Oct 10 15:35:48 PDT 2020
+InNetworkMemberResponsibility=In_Network_Member_Responsibility__c
+Pediatric\ Limitation=Pediatric_Limitation__c
+\u00A0CDTCode\u00A0\u00A0=CDT_Code__c
+Adult\ Copay=Adult_Copay__c
+Age\ Limit=Age_Limit__c
+benefitPlanVersion\u00A0=Benefit_Plan_Version__c
+benefitPlanExpirationDate=Benefit_Plan_Expiration_Date__c
+limitations\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0=Limitations__c
+Documentation\ X-rays\ Required=Documentation_Xrays_Required__c
+OutOfNetworkMemberResponsibility=Out_Of_Network_Member_Responsibility__c
+benefitPlanEffectiveDate\u00A0=Benefit_Plan_Effective_Date__c
+Adult\ Limitation=Adult_Limitation__c
+member\ copayment\ General\ \ =Member_Copayment_General__c
+benefitPlanID=Benefit_Plan_ID__c
+CDTDescription=CDT_Description__c
+\u00A0benefitPlanName\u00A0=Benefit_Plan_Name__c
+PreAuthRequired=Pre_Auth_Required__c
+\ Non\ AI/AN\ Provider\ Member\ Responsibility=Non_AI_AN_Provider_Member_Responsibility__c
+member\ copayment\ \ Specialist=Member_Copayment_Specialist__c
+Pediatric\ Copay=Pediatric_Copay__c
+AI/AN\ Provider\ Member\ Responsibility=AI_AN_Provider_Member_Responsibility__c

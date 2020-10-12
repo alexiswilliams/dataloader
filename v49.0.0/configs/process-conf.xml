@@ -1,0 +1,29 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="benefitSummaryMasterProcess"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description>BenefitSummaryMaster job gets the plan data record updates from LDP and uploads them to Salesforce.</description>
+        <property name="name" value="benefitSummaryMasterProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Users\alexis\dataloader\v49.0.0\configs\benefitSummaryMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value="https://test.salesforce.com"/>
+                <entry key="sfdc.username" value="awilliams@plumtreegroup.net.liberty.dev"/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value="8c604209b0a4c29fae5f71e4fb8b6515910b78b04869e1e9a174a9b6b5e3cb13f9c8776f4d8bb8d3e804c241e6c2c7feadda4c587a5b3a458599315e92b1c103"/>
+                <entry key="process.encryptionKeyFile" value="C:\Users\alexis\.dataloader\dataLoader.key"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Benefit_Summary__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="C:\Users\alexis\dataloader\v49.0.0\configs\benefitSummaryMasterMap.sdl"/>
+                <entry key="dataAccess.name" value="C:\Users\alexis\Downloads\Allwell_HMO_DSNP_20.csv"/>
+                <entry key="dataAccess.type" value="databaseRead"/>
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+</beans>
