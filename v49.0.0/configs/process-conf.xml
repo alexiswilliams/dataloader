@@ -1,8 +1,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <bean id="benefitSummaryMasterProcess"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="benefitSummaryMasterProcess" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>BenefitSummaryMaster job gets the plan data record updates from LDP and uploads them to Salesforce.</description>
         <property name="name" value="benefitSummaryMasterProcess"/>
         <property name="configOverrideMap">
@@ -20,7 +18,7 @@
                 <entry key="sfdc.entity" value="Benefit_Summary__c"/>
                 <entry key="process.operation" value="insert"/>
                 <entry key="process.mappingFile" value="C:\Users\alexis\dataloader\v49.0.0\configs\benefitSummaryMasterMap.sdl"/>
-                <entry key="dataAccess.name" value="C:\Users\alexis\Downloads\Allwell_HMO_DSNP_20.csv"/>
+                <!-- <entry key="dataAccess.name" value="C:\Users\alexis\Downloads\Allwell_HMO_DSNP_20.csv"/> -->
                 <entry key="dataAccess.type" value="csvRead"/>
                 <entry key="sfdc.useBulkApi" value="true"/>
                 <entry key="sfdc.loadBatchSize" value="2000"/>
