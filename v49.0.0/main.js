@@ -21,9 +21,28 @@ function sleep(milliseconds) {
         currentDate = Date.now();
     } while (currentDate - date < milliseconds);
 }
-
+var i = 1;
 fs.readdirSync(uploadFilesFolder).forEach(file => {
     if (file.endsWith(CSV_FILE)) {
+        if (i > 55 && i < 100) {
+            console.log(i + '\t\t:' + file);
+            var execCommandIteration = execCommand.replace('{dataAccess}', file).replace('{outputSuccess}', file).replace('{outputError}', file);
+            child = exec(execCommandIteration,
+                child = exec(execCommandIteration,
+                    function (error, stdout, stderr) {
+                        console.log('stdout: ' + stdout);
+                        console.log('stderr: ' + stderr);
+                        if (error !== null) {
+                            console.log('exec error: ' + error);
+                        } {
+                            console.log('executing: ' + execCommandIteration);
+                        }
+                    }
+                ));
+            sleep(30000);
+        }
+
+        i++;
         // console.log(file);
         // var filePath = uploadFilesFolder + file;
         // var linesCount = 0;
@@ -40,42 +59,29 @@ fs.readdirSync(uploadFilesFolder).forEach(file => {
         // });
 
         // var execCommandIteration = execCommand.replace('{dataAccess}', file).replace('{outputSuccess}', file).replace('{outputError}', file);
-        'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\{outputSuccess}_success.csv" ' +
-            '';
-        const mc = spawn('java', ['-cp', 'dataloader-49.0.0-uber.jar', '-Dsalesforce.config.dir=configs',
-            'com.salesforce.dataloader.process.ProcessRunner', 'process.name=benefitSummaryMasterProcess', 'dataAccess.name="uploadFiles/' + file + '"',
-            'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\' + file + '_success.csv',
-            'process.outputError="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\' + file + '_failure.csv"']);
+        // 'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\{outputSuccess}_success.csv" ' +
+        //     '';
+        // const mc = spawn('java', ['-cp', 'dataloader-49.0.0-uber.jar', '-Dsalesforce.config.dir=configs',
+        //     'com.salesforce.dataloader.process.ProcessRunner', 'process.name=benefitSummaryMasterProcess', 'dataAccess.name="uploadFiles/' + file + '"',
+        //     'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\' + file + '_success.csv',
+        //     'process.outputError="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\' + file + '_failure.csv"']);
 
 
-        mc.stdout.on("data", data => {
-            console.log(`stdout: ${data}`);
-        });
+        // mc.stdout.on("data", data => {
+        //     console.log(`stdout: ${data}`);
+        // });
 
-        mc.stderr.on("data", data => {
-            console.log(`stderr: ${data}`);
-        });
+        // mc.stderr.on("data", data => {
+        //     console.log(`stderr: ${data}`);
+        // });
 
-        mc.on('error', (error) => {
-            console.log(`error: ${error.message}`);
-        });
+        // mc.on('error', (error) => {
+        //     console.log(`error: ${error.message}`);
+        // });
 
-        mc.on("close", code => {
-            console.log(`child process exited with code ${code}`);
-        });
-        // var execCommandIteration = execCommand.replace('{dataAccess}', file).replace('{outputSuccess}', file).replace('{outputError}', file);
-        // child = exec(execCommandIteration,
-        // child = exec(execCommandIteration,
-        //     function (error, stdout, stderr) {
-        //         console.log('stdout: ' + stdout);
-        //         console.log('stderr: ' + stderr);
-        //         if (error !== null) {
-        //             console.log('exec error: ' + error);
-        //         } {
-        //             console.log('executing: ' + execCommandIteration);
-        //         }
-        //     }
-        // );
-        // sleep(30000);
+        // mc.on("close", code => {
+        //     console.log(`child process exited with code ${code}`);
+        // });
+
     }
 });
