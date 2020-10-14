@@ -24,14 +24,23 @@ function sleep(milliseconds) {
 var i = 1;
 fs.readdirSync(uploadFilesFolder).forEach(file => {
     if (file.endsWith(CSV_FILE)) {
-        if (i > 55 && i < 100) {
+        if (i > 149 && i < 200) {
             console.log(i + '\t\t:' + file);
             var execCommandIteration = execCommand.replace('{dataAccess}', file).replace('{outputSuccess}', file).replace('{outputError}', file);
             child = exec(execCommandIteration,
                 child = exec(execCommandIteration,
                     function (error, stdout, stderr) {
-                        console.log('stdout: ' + stdout);
-                        console.log('stderr: ' + stderr);
+                        try {
+                            console.log('stdout: ' + stdout);
+                        } catch (ex) {
+                            console.log('stdout err: ' + stdout);
+                        }
+
+                        try {
+                            console.log('stderr: ' + stderr);
+                        } catch (ex) {
+                            console.log('stderr err: ' + stderr);
+                        }
                         if (error !== null) {
                             console.log('exec error: ' + error);
                         } {
