@@ -24,7 +24,7 @@ function sleep(milliseconds) {
 var i = 1;
 fs.readdirSync(uploadFilesFolder).forEach(file => {
     if (file.endsWith(CSV_FILE)) {
-        if (i > 599 && i < 650) {
+        if (i > 649 && i < 700) {
             console.log(i + '\t\t:' + file);
             var execCommandIteration = execCommand.replace('{dataAccess}', file).replace('{outputSuccess}', file).replace('{outputError}', file);
             child = exec(execCommandIteration,
