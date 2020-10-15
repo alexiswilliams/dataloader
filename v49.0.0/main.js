@@ -1,4 +1,4 @@
-const uploadFilesFolder = './uploadFiles/';
+const uploadFilesFolder = './status/fixed/';
 const util = require('util');
 const fs = require('fs');
 const readline = require('readline');
@@ -9,9 +9,9 @@ const { spawn } = require('child_process');
 
 var execCommand = 'java -cp dataloader-49.0.0-uber.jar -Dsalesforce.config.dir=configs ' +
     'com.salesforce.dataloader.process.ProcessRunner process.name="benefitSummaryMasterProcess" ' +
-    'dataAccess.name="uploadFiles/{dataAccess}" ' +
-    'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\{outputSuccess}_success.csv" ' +
-    'process.outputError="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\{outputError}_failure.csv"';
+    'dataAccess.name="status/fixed/{dataAccess}" ' +
+    'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\fixed\\success\\{outputSuccess}_success.csv" ' +
+    'process.outputError="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\fixed\\error\\{outputError}_failure.csv"';
 const CSV_FILE = '.csv';
 
 function sleep(milliseconds) {
@@ -24,7 +24,7 @@ function sleep(milliseconds) {
 var i = 1;
 fs.readdirSync(uploadFilesFolder).forEach(file => {
     if (file.endsWith(CSV_FILE)) {
-        if (i > 849 && i < 900) {
+        if (i > 0 && i < 50) {
             console.log(i + '\t\t:' + file);
             var execCommandIteration = execCommand.replace('{dataAccess}', file).replace('{outputSuccess}', file).replace('{outputError}', file);
             child = exec(execCommandIteration,
@@ -75,7 +75,7 @@ fs.readdirSync(uploadFilesFolder).forEach(file => {
         // 'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\{outputSuccess}_success.csv" ' +
         //     '';
         // const mc = spawn('java', ['-cp', 'dataloader-49.0.0-uber.jar', '-Dsalesforce.config.dir=configs',
-        //     'com.salesforce.dataloader.process.ProcessRunner', 'process.name=benefitSummaryMasterProcess', 'dataAccess.name="uploadFiles/' + file + '"',
+        //     'com.salesforce.dataloader.process.ProcessRunner', 'process.name=benefitSummaryMasterProcess', 'dataAccess.name="status/fixed/' + file + '"',
         //     'process.outputSuccess="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\' + file + '_success.csv',
         //     'process.outputError="C\:\\Users\\alexis\\dataloader\\v49.0.0\\status\\' + file + '_failure.csv"']);
 
